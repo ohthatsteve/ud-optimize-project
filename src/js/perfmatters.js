@@ -1,4 +1,4 @@
-// Measuring the Critical Rendering Path with Navigation Timing
+// Measuring the Critical Rendering Path With Navigation Timing
 // https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp
 
 function logCRP() {
