@@ -12,42 +12,42 @@ var imagemin = require('gulp-imagemin');
 
 //Minify JS
 gulp.task('main-scripts', function() {
-    return gulp.src('dev/js/*.js')
+    return gulp.src('src/js/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('view-scripts', function() {
-    return gulp.src('dev/views/js/*.js')
+    return gulp.src('src/views/js/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/views/js'));
 });
 
 //Minify CSS
 gulp.task('main-styles', function() {
-    return gulp.src('dev/css/*.css')
+    return gulp.src('src/css/*.css')
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'))
 })
 
 gulp.task('view-styles', function() {
-    return gulp.src('dev/views/css/*.css')
+    return gulp.src('src/views/css/*.css')
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/views/css'))
 })
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('dev/js/*.js', ['main-scripts','view-scripts']);
+    gulp.watch('src/js/*.js', ['main-scripts','view-scripts']);
 });
 
 //Inline critital css resources
 gulp.task('critical', function() {
-    return gulp.src('dev/views/*.html')
+    return gulp.src('src/views/*.html')
         .pipe(critical({
-            base: 'dev/',
+            base: 'src/',
             inline: true,
-            css: 'dev/views/css/style.css'
+            css: 'src/views/css/style.css'
         }))
         .pipe(gulp.dest('dist/views/'));
 
@@ -55,14 +55,14 @@ gulp.task('critical', function() {
 
 //Compress images
 gulp.task('main-images', function() {
-    return gulp.src('dev/img/*')
+    return gulp.src('src/img/*')
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img'));
 });
 
 
 gulp.task('view-images', function() {
-    return gulp.src('dev/views/images/*')
+    return gulp.src('src/views/images/*')
         .pipe(imagemin())
         .pipe(gulp.dest('dist/views/images'));
 });
