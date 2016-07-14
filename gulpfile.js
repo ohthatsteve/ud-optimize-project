@@ -49,13 +49,19 @@ gulp.task('view-html'), function() {
     .pipe(gulp.dest('dist/views'))
 }
 
-// Watch Files For Changes
-gulp.task('watch', function() {
-    gulp.watch('src/js/*.js', ['main-scripts','view-scripts']);
+//Generate critical path css
+gulp.task('main-critical', function() {
+    return gulp.src('src/*.html')
+        .pipe(critical({
+            base: 'src/',
+            inline: true,
+            css: 'src/css/style.css'
+        }))
+        .pipe(gulp.dest('dist/'));
+
 });
 
-//Inline critital css resources
-gulp.task('critical', function() {
+gulp.task('view-critical', function() {
     return gulp.src('src/views/*.html')
         .pipe(critical({
             base: 'src/',
@@ -80,17 +86,22 @@ gulp.task('view-images', function() {
         .pipe(gulp.dest('dist/views/images'));
 });
 
+//Combine main and view tasks 
+gulp.task('scripts', ['main-scripts','view-scripts']);
+
+gulp.task('html', ['main-html', 'view-html']);
+
+gulp.task('styles', ['main-styles', 'view-styles']);
+
+gulp.task('images', ['main-images', 'view-images']);
+
+gulp.task('critical', ['main-critical', 'view-critical']);
 
 
 // Default Task
 gulp.task('default', 
-    ['main-scripts',
-    'view-scripts', 
-    'main-html',
-    'view-html',
-    'main-styles', 
-    'view-styles',
-    'main-images',
-    'view-images', 
-    'critical', 
-    'watch']);
+    ['scripts',
+    'html',
+    'styles',
+    'images',
+    'critical']);

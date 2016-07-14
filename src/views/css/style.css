@@ -38,8 +38,18 @@ form {
   float: left;
   display: flex;
   will-change: transform;
+  width:33.33%;
+  height: 325px;
   transform: translateZ(0);
 
+}
+
+.randomPizzaImg{
+  width: 34%;
+}
+
+.randomPizzaDesc{
+  width: 66%;
 }
  .container {
   background-color: rgba(240, 60, 60, 0.8);
