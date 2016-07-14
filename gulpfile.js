@@ -28,13 +28,26 @@ gulp.task('main-styles', function() {
     return gulp.src('src/css/*.css')
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'))
-})
+});
 
 gulp.task('view-styles', function() {
     return gulp.src('src/views/css/*.css')
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/views/css'))
-})
+});
+
+//Minify HTML
+gulp.task('main-html'), function() {
+    return gulp.src('src/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('dist'))
+}
+
+gulp.task('view-html'), function() {
+    return gulp.src('src/views/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('dist/views'))
+}
 
 // Watch Files For Changes
 gulp.task('watch', function() {
@@ -73,6 +86,8 @@ gulp.task('view-images', function() {
 gulp.task('default', 
     ['main-scripts',
     'view-scripts', 
+    'main-html',
+    'view-html',
     'main-styles', 
     'view-styles',
     'main-images',
