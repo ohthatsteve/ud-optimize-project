@@ -38,3 +38,7 @@ This is a project page for a fake pizzeria.  This page features pizza images tha
 * In the function updatePositions, the formula to determine the path of the moving pizzas was calling `document.body.scrollTop` inside of a `for`loop, causing heavy jank. To fix this, I now:
   - Wrap all the movement code in a `requestAnimationFrame`.
   - Store `document.body.scrollTop` as a variable outside of the `for` loop.
+
+####Known issues
+
+1. When running `gulp view-critical`, there is repitition in the inline styles and style.css. 
