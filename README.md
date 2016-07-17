@@ -29,12 +29,12 @@ This is a project page for a fake pizzeria.  This page features pizza images tha
 ####Main.js optimizations 
 
 * Originally, the function changePizzaSizes was running `document.querySelectorAll` multiple times inside a `for` loop, causing performance issues.  To fix this, I now :   
-  1. Run `querySelectorAll` once to create an array of randomPizzaContainers.
-  2. Go through a switch to determine the new width of the pizzas.
-  3. Run a `for` loop, updating the width of all the random pizzas.
-  4. Remove heavy and unnessesary `determineDX` call.
+  - Run `querySelectorAll` once to create an array of randomPizzaContainers.
+  - Go through a switch to determine the new width of the pizzas.
+  - Run a `for` loop, updating the width of all the random pizzas.
+  - Remove heavy and unnessesary `determineDX` call.
 
 
 * In the function updatePositions, the formula to determine the path of the moving pizzas was calling `document.body.scrollTop` inside of a `for`loop, causing heavy jank. To fix this, I now:
-  1. Wrap all the movement code in a `requestAnimationFrame`.
-  2. Store `document.body.scrollTop` as a variable outside of the `for` loop.
+  - Wrap all the movement code in a `requestAnimationFrame`.
+  - Store `document.body.scrollTop` as a variable outside of the `for` loop.
