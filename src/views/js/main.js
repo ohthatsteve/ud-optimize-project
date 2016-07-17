@@ -465,6 +465,8 @@ var resizePizzas = function(size) {
         default:
           console.log("bug in changePizzaSizes");
       }
+
+      //Update width of all random pizzas
      for(var i = 0; i < randomPizzas.length; i++) {
         randomPizzas[i].style.width = newWidth + "%";
      }
