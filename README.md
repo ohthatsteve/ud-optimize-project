@@ -8,7 +8,7 @@ are forking this repo, use the following steps to install and make use of the ta
 
 1. In your terminal, navigate to the top folder of the project directory
 2. Run `npm install`
-3. Now you are able to use the gulp tasks defined in `gulpfile.js` (Note: All of these commands target files in `/src` and `/src/views` and stores them in `/dist`.  If you only want to run the task in just `/src` or `/src/views`, prefix the command with `main-` or `view-`.  (i.e. `main-critical` or `view-images`)
+3. Now you are able to use the gulp tasks defined in `gulpfile.js` (Note: All of these commands target files in `/src` and `/src/views` and stores them in `/dist`.  If you want to run the task for files in `/src` or `/src/views` but not the other, prefix the command with `main-` or `view-`.  (i.e. `main-critical` or `view-images`)
   * `gulp scripts` minifies javascripts.
   * `gulp styles` minifies CSS.
   * `gulp html` removes whitespace from html files.
@@ -26,6 +26,15 @@ The last link, Cam's Pizzeria, will take you to `pizza.html`, where most of the 
 
 This is a project page for a fake pizzeria.  This page features pizza images that move across the background, as well as pizza images that change sizes depending on the users size selection.  Both of these actions are done by javascript found in `views/js/main.js`.  This file had a few optimization issues that I have attempted to fix, and are outlined below.
 
-####Main.js optimization 
+####Main.js optimizations 
+
+* Originally, the function changePizzaSizes was running `document.querySelectorAll` multiple times inside a `for` loop, causing performance issues.  To fix this, I now :   
+  1. Run `querySelectorAll` once to create an array of randomPizzaContainers.
+  2. Go through a switch to determine the new width of the pizzas.
+  3. Run a `for` loop, updating the width of all the random pizzas.
+  4. Remove heavy and unnessesary `determineDX` call.
 
 
+* In the function updatePositions, the formula to determine the path of the moving pizzas was calling `document.body.scrollTop` inside of a `for`loop, causing heavy jank. To fix this, I now:
+  1. Wrap all the movement code in a `requestAnimationFrame`.
+  2. Store `document.body.scrollTop` as a variable outside of the `for` loop.
