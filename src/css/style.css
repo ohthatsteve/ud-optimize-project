@@ -14,7 +14,7 @@ a:focus { outline: thin dotted; }
 a:hover, a:active { color: #c00; outline: 0; }
 
 ul, ol { margin: 1em 0; padding: 0 0 0 20px; }
-img { border: 0; max-width: 100px; }
+img { border: 0; max-width: 80px; }
 
 header, footer, .container { max-width: 45em; margin: 0 auto; }
 

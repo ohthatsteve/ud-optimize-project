@@ -8,12 +8,12 @@ are forking this repo, use the following steps to install and make use of the ta
 
 1. In your terminal, navigate to the top folder of the project directory
 2. Run `npm install`
-3. Now you are able to use the gulp tasks defined in `gulpfile.js` (Note: All of these commands target files in `/src` and `/src/views` and stores them in `/dist`.  If you only want to run the task in just `/src` or `/src/views`, prefix the command with `main-` or `view-`.  i.e. `main-critical`)
-  - `gulp scripts` minifies javascripts.
-  - `gulp styles` minifies CSS.
-  - `gulp html` removes whitespace from html files.
-  - `gulp critical` attempts to inline critical-path CSS.
-  - `gulp images` compresses images.
+3. Now you are able to use the gulp tasks defined in `gulpfile.js` (Note: All of these commands target files in `/src` and `/src/views` and stores them in `/dist`.  If you only want to run the task in just `/src` or `/src/views`, prefix the command with `main-` or `view-`.  (i.e. `main-critical` or `view-images`)
+  * `gulp scripts` minifies javascripts.
+  * `gulp styles` minifies CSS.
+  * `gulp html` removes whitespace from html files.
+  * `gulp critical` attempts to inline critical-path CSS.
+  * `gulp images` compresses images.
 
 ###Overview of Files
 
@@ -27,4 +27,5 @@ The last link, Cam's Pizzeria, will take you to `pizza.html`, where most of the 
 This is a project page for a fake pizzeria.  This page features pizza images that move across the background, as well as pizza images that change sizes depending on the users size selection.  Both of these actions are done by javascript found in `views/js/main.js`.  This file had a few optimization issues that I have attempted to fix, and are outlined below.
 
 ####Main.js optimization 
+
 
