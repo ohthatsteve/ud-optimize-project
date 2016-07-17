@@ -9,11 +9,11 @@ are forking this repo, use the following steps to install and make use of the ta
 1. In your terminal, navigate to the top folder of the project directory
 2. Run `npm install`
 3. Now you are able to use the gulp tasks defined in `gulpfile.js` (Note: All of these commands target files in `/src` and `/src/views` and stores them in `/dist`.  If you only want to run the task in just `/src` or `/src/views`, prefix the command with `main-` or `view-`.  i.e. `main-critical`)
-  -`gulp scripts` minifies javascripts.
-  -`gulp styles` minifies CSS.
-  -`gulp html` removes whitespace from html files.
-  -`gulp critical` attempts to inline critical-path CSS.
-  -`gulp images` compresses images.
+   -`gulp scripts` minifies javascripts.
+   -`gulp styles` minifies CSS.
+   -`gulp html` removes whitespace from html files.
+   -`gulp critical` attempts to inline critical-path CSS.
+   -`gulp images` compresses images.
 
 ###Overview of Files
 
