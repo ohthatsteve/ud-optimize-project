@@ -28,16 +28,32 @@ This is a project page for a fake pizzeria.  This page features pizza images tha
 
 ####Main.js optimizations 
 
-* Originally, the function changePizzaSizes was running `document.querySelectorAll` multiple times inside a `for` loop, causing performance issues.  To fix this, I now :   
+* In the function changePizzaSizes, `document.querySelectorAll` was running multiple times inside a `for` loop, causing performance issues.  To fix this, I now :   
   - Run `querySelectorAll` once to create an array of randomPizzaContainers.
   - Go through a switch to determine the new width of the pizzas.
   - Run a `for` loop, updating the width of all the random pizzas.
   - Remove heavy and unnessesary `determineDX` call.
-
+  - Create local variable for the length of the randomPizzas array.  This is used in the `for` loop.
 
 * In the function updatePositions, the formula to determine the path of the moving pizzas was calling `document.body.scrollTop` inside of a `for`loop, causing heavy jank. To fix this, I now:
   - Wrap all the movement code in a `requestAnimationFrame`.
-  - Store `document.body.scrollTop` as a variable outside of the `for` loop.
+  - Store `document.body.scrollTop` in a variable outside of the `for` loop.
+  - Declare `phase` as a variable in the initialisation of the `for` loop.
+  - Create local variable for the length of the items array.  This is used in the `for` loop.
+
+* The eventListener for DOMContentLoaded was creating way more moving pizza elements than needed.  To fix this, I now:
+  - Store the height of the screen as a local variable
+  - Calculate the number of required rows by dividing the screen height by the image height.
+  - Calculate the number of required pizzas by multiplying the number of columns by the number of rows.
+  - Declare `elem` variable in the initialisation of the `for` loop.
+
+
+* In the functions changeSliderLabel and determineDx I changed `querySelector` to `getElementById`.
+
+* In the functions changePizzaSizes and updatePositions I changed `querySelectorAll` to `getElementByClassName`.
+
+* Move the variable pizzaDiv outside of the `for` loop it was inside of.
+
 
 ####Known issues
 
