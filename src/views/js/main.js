@@ -520,8 +520,7 @@ function updatePositions() {
   var scrollTop = document.body.scrollTop;
   var items = document.getElementsByClassName('mover');
   var len = items.length;
-  var phase;
-  for (var i = 0; i < len; i++) {
+  for (var i = 0, phase; i < len; i++) {
     phase = Math.sin((scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
 
@@ -545,9 +544,19 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  var pizza = document.querySelector("#movingPizzas1");
-  for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
+  
+  // Retrieve the height of the screen
+  var h = window.screen.height;
+  
+  //Divide the height of the screen by the size of the background images, rounded down
+  var rows = Math.floor(h/s);
+  
+  var pizza = document.getElementById("movingPizzas1");
+  
+  //Multiply the number of columns and rows to get the required number of pizzas
+  var pizzas = cols * rows;
+  for (var i = 0, elem; i < pizzas; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
